@@ -5,7 +5,10 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/apple.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://d3js.org/topojson.v2.min.js"></script>
 	</head>
 	<body class="is-preload">
 
@@ -17,7 +20,8 @@
 							<li><a href="#intro">About me</a></li>
 							<li><a href="#one">Projects</a></li>
 							<li><a href="#two">Publications</a></li>
-							<li><a href="#three">Get in touch</a></li>
+							<li><a href="#three">Conference Presentations</a></li>
+							<li><a href="#four">Get in touch</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -28,17 +32,13 @@
 
 				<!-- Intro -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<canvas id="globe" style="position: absolute; top: 0; left: 0; z-index: -1;"></canvas>
 						<div class="inner">
 							<h1>Abdullah Al Saim</h1>
 							<p>
 								Welcome to my website!
 								<p>
-								I'm a PhD Candidate in Geosciences at the University of Arkansas, specializing in GIS and Remote Sensing. 
-								My research focuses on forest classification and biomass estimation from multi-source satellite imagery 
-								using machine learning. With a background in Geography and Environmental Sciences, 
-								I bring a blend of academic rigor and hands-on experience to my work.
-								I am passionate about GIS and enjoy leveraging data to craft meaningful and impactful maps and drive 
-								innovation in the geospatial realm.
+									PhD in Geoscience and an emerging GIS professional (GISP-E) with a deep passion for using geospatial tools to make sense of the world around us. With a strong background in GIS, Remote Sensing, and Machine Learning, I’ve had the chance to lead exciting projects and contribute to research that pushes boundaries. I love turning complex data into clear, meaningful maps that tell stories and spark insight. I’m always looking for ways to blend academic knowledge with real-world applications to create something impactful. Let’s connect and bring maps to life!
 								<p> <a href="https://www.linkedin.com/in/abdullah-al-saim-2a8a09b6/">@AbdullahAlSaim</a><br />
 							<ul class="actions">
 								<li><a href="#one" class="button scrolly">Projects</a></li>
@@ -98,37 +98,17 @@
 							<a href="images/rem_mimized_image.jpg" class="image"><img src="images/rem_mimized_image.jpg" alt="" data-position="top center" /></a>
 							<div class="content">
 								<div class="inner">
-									<h2>Cartography</h2>
-									<p>The Relative Elevation Model (REM) is vital for visualizing floodplains and understanding fluvial landforms. 
-										By detrending a Digital Elevation Model (DEM) based on the water surface of a stream, 
-										REM generates Height Above River (HAR) rasters that highlight features otherwise challenging to determine. 
-										These rasters, normalized to the elevation of a channel, enhance the visualization of relics such as stream channels, meander scrolls, and floodplain surfaces, 
-										which are crucial for channel migration studies, flood assessments, and habitat evaluations. REM provides invaluable insights into the dynamics of river systems 
-										and aids in making informed decisions in environmental management and engineering projects.
-										Lastly, they are stunning to look at! </p>
+									<h2>Cartography & Earth Engine Apps</h2>
+									<p>The Relative Elevation Model (REM) is vital for visualizing floodplains and understanding fluvial landforms. By detrending a Digital Elevation Model (DEM) based on the water surface of a stream, REM generates Height Above River (HAR) rasters that highlight features otherwise challenging to determine. These rasters, normalized to the elevation of a channel, enhance the visualization of relics such as stream channels, meander scrolls, and floodplain surfaces, which are crucial for channel migration studies, flood assessments, and habitat evaluations. REM provides invaluable insights into the dynamics of river systems and aids in making informed decisions in environmental management and engineering projects.
+									<br><br>This Earth Engine application offers a comprehensive view of global environmental dynamics. The app displays monthly averages of Night Time Data, NDVI (Normalized Difference Vegetation Index), and Land Surface Temperature by leveraging VIIRS and MODIS images. It is a powerful tool for understanding the interplay between urbanization, vegetation health, and land surface temperature patterns worldwide from 2014 to 2023.</p>
 									<ul class="actions">
 										<li><a href="images/rem_mimized_image.jpg" class="button">View Full Screen</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="https://abdullahalsaim94.users.earthengine.app/view/global-monthly-viirs-nighttime-data--modis-ndvi-lst" class="image"><img src='images/Earth_Engine.jpg' alt="" data-position="top center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Google Earth Engine App</h2>
-									<p>This Earth Engine application offers a comprehensive view of global environmental dynamics.
-										The app displays monthly averages of Night Time Data, NDVI (Normalized Difference Vegetation Index),
-										and Land Surface Temperature by leveraging VIIRS and MODIS images. It is a powerful tool for understanding the interplay between urbanization, vegetation health, and land surface temperature patterns worldwide from 2014 to 2023.
-										Check it out for an insightful exploration of our planet's changing landscapes!</p>
-									<ul class="actions">
 										<li><a href="https://abdullahalsaim94.users.earthengine.app/view/global-monthly-viirs-nighttime-data--modis-ndvi-lst" class="button">View App</a></li>
 									</ul>
 								</div>
 							</div>
 						</section>
 					</section>
-				</section>
 				<!-- Two -->
 					<section id="two" class="wrapper style3 fade-up">
 						<div class="inner">
@@ -144,9 +124,13 @@
 							<p style="margin:0;color:white;font-size:16px;">Saim, A. A., & Rahman, S. H. (2021). Impacts of Climate Change on Dry Season Flow of Gorai River, Bangladesh Using SWAT Model. Bangladesh Journal of Environmental Research, 12, 20–36 </p>							<ul class="actions">
 								<li><a href="https://www.researchgate.net/profile/Syed-Rahman-22/publication/352838638_Impacts_of_Climate_Change_on_Dry_Season_Flow_of_Gorai_River_Bangladesh/links/60dc66ac458515d6fbeea111/Impacts-of-Climate-Change-on-Dry-Season-Flow-of-Gorai-River-Bangladesh.pdf" class="button">Learn more</a></li>
 							</ul>
-						
+						</div>
+					</section>
+				
+				<!-- Three -->
+					<section id="three" class="wrapper style3 fade-up">
 						<div class="inner">
-							<h3>Conference Presentations</h3>
+							<h2>Conference Presentations</h2>
 							<p style="margin:0;color:white;font-size:16px;">Saim, A. and Aly, M.H., 2024, Enhancing Tree Species Mapping in Arkansas' Forests through Machine Learning and Satellite Data Fusion: A Google Earth Engine-Based Approach, American Association of Geographers (AAG), Honolulu, Hawaii, April 16–20, 2024.</p>
 							<ul class="actions">
 								<li><a href="https://aag.secure-platform.com/aag2024/organizations/main/gallery/rounds/74/details/51592" class="button">Learn more</a></li>
@@ -162,8 +146,8 @@
 						</div>
 					</section>
 
-				<!-- Three -->
-					<section id="three" class="wrapper style1 fade-up">
+				<!-- Four -->
+					<section id="four" class="wrapper style1 fade-up">
 						<div class="inner">
 							<h2>Get In Touch</h2>
 							<p>Let's connect! Whether you have questions, feedback, or collaboration ideas, I am all ears. 
@@ -228,6 +212,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/globe.js"></script>
 
 	</body>
 </html>
